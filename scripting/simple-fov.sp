@@ -9,8 +9,9 @@
 #define PLUGIN_VERSION "0.1"
 #define PLUGIN_PREFIX "[FOV]"
 
-
-// Variables {{{
+// Variables
+ConVar cm_fov_min,
+cm_fov_max;
 // Cookies
 new Handle:cookieFov     = INVALID_HANDLE;
 
@@ -55,7 +56,9 @@ public OnPluginStart()
 
     cookieFov     = RegClientCookie("cm_cookie_fov", "FOV", CookieAccess_Protected);
 
-    CreateConVar("classicmovement_version", PLUGIN_VERSION, "Classic Movement version", FCVAR_SPONLY | FCVAR_NOTIFY | FCVAR_DONTRECORD);
+    CreateConVar("classicmovement_version", PLUGIN_VERSION, "Classic Movement FOV version", FCVAR_SPONLY | FCVAR_NOTIFY | FCVAR_DONTRECORD);
+    cm_fov_min = CreateConVar("fov_min", "90", "Minimum FOV a client can set with the !fov command", _, true, 90.0, true, 170.0);
+    cm_fov_max = CreateConVar("fov_max", "170", "Minimum FOV a client can set with the !fov command", _, true, 90.0, true, 170.0);
 
     AutoExecConfig(true);
 
@@ -117,11 +120,22 @@ LoadCookies(client)
 
 SetFov(client, fov)
 {
-    if (fov > 0)
+    int min = GetConVarInt(cm_fov_min);
+    int max = GetConVarInt(cm_fov_max);
+
+    if (fov > max) {
+        ReplyToCommand(client, "\x04[SM] \x01Your FOV value is to big, %d is the limit.", max);
+        return;
+    } if (fov < min) {
+        ReplyToCommand(client, "\x04[SM] \x01Your FOV value is to small, %d is the limit.", min);
+        return;
+    }
+
+    if (max >= fov >= min)
     {
         SetEntProp(client, Prop_Send, "m_iFOV", fov);
         SetEntProp(client, Prop_Send, "m_iDefaultFOV", fov);
-    }
+    } 
 }
 
 UpdateFov(client)
