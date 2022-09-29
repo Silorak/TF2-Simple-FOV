@@ -58,7 +58,7 @@ public OnPluginStart()
 
     CreateConVar("classicmovement_version", PLUGIN_VERSION, "Classic Movement FOV version", FCVAR_SPONLY | FCVAR_NOTIFY | FCVAR_DONTRECORD);
     cm_fov_min = CreateConVar("fov_min", "90", "Minimum FOV a client can set with the !fov command", _, true, 90.0, true, 170.0);
-    cm_fov_max = CreateConVar("fov_max", "170", "Minimum FOV a client can set with the !fov command", _, true, 90.0, true, 170.0);
+    cm_fov_max = CreateConVar("fov_max", "170", "Maximum FOV a client can set with the !fov command", _, true, 90.0, true, 170.0);
 
     AutoExecConfig(true);
 
@@ -124,10 +124,10 @@ SetFov(client, fov)
     int max = GetConVarInt(cm_fov_max);
 
     if (fov > max) {
-        ReplyToCommand(client, "\x04[SM] \x01Your FOV value is to big, %d is the limit.", max);
+        ReplyToCommand(client, "\x04[SM] \x01Your FOV value is to big, %d is the highest.", max);
         return;
     } if (fov < min) {
-        ReplyToCommand(client, "\x04[SM] \x01Your FOV value is to small, %d is the limit.", min);
+        ReplyToCommand(client, "\x04[SM] \x01Your FOV value is to small, %d is the smallest.", min);
         return;
     }
 
