@@ -3,14 +3,15 @@ I am NOT original creator of this plugin. I just stripped fov code from [TF2-Cla
 
 # Convars
 ```c
-    classicmovement_version - Just prints plugins version in console.
-    fov_min "90"            - The minimum value, allowed for players to set to.
-    fov_max "170"           - The maximum value, allowed for players to set to.
+    classicmovement_version - Just prints plugins version in console
+    fov_min "90"            - The minimum value, allowed for players to set to
+    fov_max "170"           - The maximum value, allowed for players to set to
 ```
 
 # Commands
 ```c
-    !fov [value] or sm_fov [value]
+    !fov    - In the chat
+    sm_fov  - In the console
 ```
 
 # All Credits go to:
