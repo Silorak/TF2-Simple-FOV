@@ -86,26 +86,12 @@ public OnSpawnPost(client)
 {
     UpdateFov(client);
 }
-
-// Main {{{
-public OnPreThink(client)
-{
-    if (!IsClientInGame(client) || !IsPlayerAlive(client))
-        return;
-
-    new buttons = GetClientButtons(client);
-
-    // Check if the fov was reset by zooming
-    if (buttons & IN_ATTACK2 && GetEntProp(client, Prop_Send, "m_iFOV") == 0)
-        UpdateFov(client);
-}
 // Setup, Variables, Misc, ... {{{
 SetupClient(client)
 {
     if (IsFakeClient(client) || client < 1 || client > MAXPLAYERS)
         return;
 
-    SDKHook(client, SDKHook_PreThink, OnPreThink);
     SDKHook(client, SDKHook_SpawnPost, OnSpawnPost);
 }
 
