@@ -4,8 +4,8 @@ I am NOT original creator of this plugin. I just stripped fov code from [TF2-Cla
 # Convars
 ```c
     classicmovement_version - Just prints plugins version in console
-    fov_min "90"            - The minimum value, allowed for players to set to
-    fov_max "170"           - The maximum value, allowed for players to set to
+    fov_min "75"            - The minimum value, allowed for players to set to
+    fov_max "130"           - The maximum value, allowed for players to set to
 ```
 
 # Commands
