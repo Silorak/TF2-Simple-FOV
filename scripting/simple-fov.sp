@@ -10,8 +10,8 @@
 #define PLUGIN_PREFIX "[FOV]"
 
 // Variables
-ConVar cm_fov_min,
-cm_fov_max;
+ConVar cm_fov_min;
+ConVar cm_fov_max;
 // Cookies
 new Handle:cookieFov     = INVALID_HANDLE;
 
