@@ -95,7 +95,7 @@ public OnClientCookiesCached(client)
     LoadCookies(client);
 }
 
-public OnSpawnPost(client, fov)
+public OnSpawnPost(client)
 {
     UpdateFov(client);
 }
