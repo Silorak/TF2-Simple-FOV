@@ -63,12 +63,12 @@ public Action:CmdSetFov(client, args)
         new fov = StringToInt(buf);
 
         if (fov > GetConVarInt(cm_fov_max)) {
-            ReplyToCommand(client, "\x04%s \x01Your FOV value is to big, %d is the highest.", PLUGIN_PREFIX, GetConVarInt(cm_fov_max));
+            ReplyToCommand(client, "\x04%s \x01Your FOV value is too big, %d is the highest.", PLUGIN_PREFIX, GetConVarInt(cm_fov_max));
             return Plugin_Handled;
         }
 
         if (fov < GetConVarInt(cm_fov_min)) {
-            ReplyToCommand(client, "\x04%s \x01Your FOV value is to small, %d is the smallest.", PLUGIN_PREFIX, GetConVarInt(cm_fov_min));
+            ReplyToCommand(client, "\x04%s \x01Your FOV value is too small, %d is the smallest.", PLUGIN_PREFIX, GetConVarInt(cm_fov_min));
             return Plugin_Handled;
         }
 
